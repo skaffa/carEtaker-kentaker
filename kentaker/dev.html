@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OCR Image Upload</title>
+</head>
+<body>
+    <h1>Upload an Image for OCR Processing</h1>
+    <form id="uploadForm" action="http://127.0.0.1:5000/process-image" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Upload Image</button>
+    </form>
+
+    <h2>Result</h2>
+    <pre id="result"></pre>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const response = await fetch(event.target.action, {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            document.getElementById('result').textContent = JSON.stringify(result, null, 2);
+        });
+    </script>
+</body>
+</html>

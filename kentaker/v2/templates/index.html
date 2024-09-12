@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-time Object Detection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #000;
+            width: 100vw;
+        }
+
+        img {
+            height: 100vh;
+            aspect-ratio: 16 / 9;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <h1>Real-time Object Detection</h1>
+    <img src="{{ url_for('video_feed') }}" width="800">
+</body>
+</html>
